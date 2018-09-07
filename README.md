@@ -1,2 +1,2 @@
-# stat545_md1_explorer
+# stat545
 This repo is part of a STAT 545 exercise to explore GitHub and markdown.
