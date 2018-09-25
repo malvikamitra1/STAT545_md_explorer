@@ -42,17 +42,16 @@ ggplot(gapminder,aes(x=lifeExp,y=gdpPercap))+
 
 
 3. Add the missing component as a _layer_.
-
+```{r}
+ggplot(gapminder,aes(x=lifeExp,y=gdpPercap))
+```
 
 
 Notice the "metaprogramming" again!
 
 4. You _must_ remember to put the aesthetic mappings in the `aes` function! What happens if you forget?
 
-```{r}
-ggplot(gapminder,(x=lifeExp,y=gdpPercap))+
-  geom_point()
-```
+
 
 
 5. Put the x-axis on a log scale, first by transforming the x variable. 
@@ -75,6 +74,10 @@ ggplot(gapminder,aes(x=lifeExp,gdpPercap))+
 
 7. The aesthetic mappings can be specified on the geom layer if you want, instead of the main `ggplot` call. Give it a try:
 
+```{r}
+ggplot(gapminder)+
+  geom_point(aes(x=lifeExp,y=gdpPercap))
+```
 
 8. Optional: git stage and cggplot(gapminder,aes(x=lifeExp,gdpPercap))+geom_point()+scale_y_log10()ommit
 
