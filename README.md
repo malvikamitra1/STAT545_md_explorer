@@ -14,4 +14,6 @@ This is a new line.
 
 Added the classwork for 18th sept
 
-Added the classwork on ggplots
+Added the classwork on ggplot1
+
+Added the classwork on ggplot2
