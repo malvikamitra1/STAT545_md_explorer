@@ -60,6 +60,7 @@ These functions we've seen are called __vectorized functions__.
 Use `summarize()` to compute the mean and median life expectancy using all entries:
 
 ```{r}
+gapminder
 gapminder %>% 
   summarise(mu=mean(lifeExp),
             md=median(lifeExp))
@@ -137,8 +138,8 @@ n_distinct: How many years of record does each country have?
 ```{r}
 gapminder %>% 
   group_by(continent) %>% 
-  #summarise(num=n())
-  tally()
+  summarise(num=n())
+  #tally()
 gapminder %>% 
   count(continent)
 ```
