@@ -16,8 +16,15 @@ Switch focus to exploring aesthetic mappings, instead of geoms.
 
 ## Shapes
 ```{r}
+gvsl<-ggplot(gapminder,aes(gdpPercap,lifeExp))
+gvsl+geom_point(aes(shape=continent),alpha=0.1)
+
 gvsl<-ggplot(gapminder,aes(gdpPercap,lifeExp))+
   scale_x_log10()
+gvsl+geom_point(aes(shape=continent),alpha=0.5)
+
+gvsl<-ggplot(gapminder,aes(gdpPercap,lifeExp))+
+  scale_y_log10()
 gvsl+geom_point(aes(shape=continent),alpha=0.2)
 ```
 
@@ -28,7 +35,7 @@ gvsl+geom_point(aes(shape=continent),alpha=0.2)
     - What's up with `pch`? point character(same as shape)
 ```{r}
 gvsl+geom_point(shape=7)
-gvsl+geom_point(pch=7)
+gvsl+geom_point(pch="j")
 gvsl+geom_point(shape="$")
 ```
 
@@ -68,6 +75,10 @@ Make histograms of `gdpPercap` for each continent. Try the `scales` and `ncol` a
 ```{r}
 ggplot(gapminder,aes(lifeExp))+
    facet_wrap(~continent,scales="free_x")+
+  geom_histogram(bins=30)
+
+ggplot(gapminder,aes(lifeExp))+
+   facet_wrap(~continent)+
   geom_histogram()
 ```
 
@@ -76,7 +87,7 @@ Remove Oceania. Add another variable: `lifeExp > 60`.
 ```{r}
 ggplot(gapminder,aes(gdpPercap))+
   facet_grid(continent~lifeExp>60)+
-  geom_histogram()
+  geom_histogram(bins=30)
 ```
 
 
@@ -85,7 +96,7 @@ ggplot(gapminder,aes(gdpPercap))+
 - Add a `size` aesthetic to a scatterplot. What about `cex`?
 ```{r}
 gvsl+geom_point(aes(size=pop),alpha=0.2)+
-  scale_size_area()
+   scale_size_area()
 ```
 
 - Try adding `scale_radius()` and `scale_size_area()`. What's better?
@@ -125,7 +136,7 @@ gapminder %>%
   filter(country=="Rwanda") %>% 
   arrange(year) %>% 
   ggplot(aes(gdpPercap,lifeExp))+
-  #scale_x_log10()+
+  scale_x_log10()+
   geom_point()+
   geom_path(arrow=arrow())
 ```

@@ -64,7 +64,7 @@ rename(gapminder,cont=continent)
 
 1. Order by year.
 ```{r}
-arrange(gapminder,lifeExp)
+arrange(gapminder,year)
 
 ```
 
