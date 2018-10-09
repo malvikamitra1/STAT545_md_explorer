@@ -57,6 +57,12 @@ full_join(a,b,by="x1")
 
 ### what happen if we do not specify `by` option?
 
+```{r}
+a
+b
+left_join(a,b,by="x1")
+left_join(a,b)
+```
 
 
 ### what happen if we join two different variables (e.g., "x1" to "x3") from two tibbles `a` to `b`?
@@ -98,6 +104,9 @@ colnames(weather)
 ```{r}
 flights2 <- flights[1:1000,] %>% 
   select(year, tailnum, carrier, time_hour)
+flights2
+flights
+airlines
 ```
 
 ### 3. Add airline names to `flights2` from `airlines` dataset.
@@ -106,6 +115,8 @@ flights2 <- flights[1:1000,] %>%
 # Which join function to use?
 colnames(airlines)
 colnames(flights2)
+flights2
+airlines
 left_join(flights2,airlines)
 right_join(flights2,airlines)
 left_join(airlines,flights2)
@@ -116,6 +127,8 @@ left_join(airlines,flights2)
 ### 4. Add `weather` information to the `flights2` dataset by matching "year" and "time_hour" variables.
 ```{r}
 colnames(weather) 
+flights2
+weather
   flights2 %>% 
   left_join(weather,by=c("year","time_hour"))
 ```
@@ -126,7 +139,7 @@ colnames(weather)
 
 ```{r}
 flights2 %>% 
-  left_join(weather,by=c("year","time_hour"))
+  left_join(weather,by=c("time_hour"))
 ```
 
 
@@ -172,6 +185,8 @@ semi_join(a,c)
 
 ### example for `intersect`: Rows that appear in both `y` and `z`
 ```{r}
+(y <-  tibble(x1 = LETTERS[1:3], x2 = 1:3))
+(z <- tibble(x1 = c("B", "C", "D"), x2 = c(2,5,4)))
 intersect(y,z)
 
 ```
